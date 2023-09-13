@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "339170572764",
+    "project_id": "chat-app-dfd34",
+    "storage_bucket": "chat-app-dfd34.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339170572764:android:5b9d76053461eafb43f719",
+        "android_client_info": {
+          "package_name": "com.cihancelik.chatapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFmLx8VIOdxN62K9bxI3tGncBalgKNw9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
