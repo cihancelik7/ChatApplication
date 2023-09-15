@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FBEEE5"
     tools:context=".ChatActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -27,8 +28,8 @@
             android:layout_toLeftOf="@id/chatActivitySendBtn"
             android:background="@drawable/rounded_corner"
             android:hint="Write here.."
-            android:padding="16dp"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:padding="16dp" />
 
         <ImageButton
             android:id="@+id/chatActivitySendBtn"
