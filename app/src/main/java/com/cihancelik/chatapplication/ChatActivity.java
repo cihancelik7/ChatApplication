@@ -43,6 +43,7 @@ public class ChatActivity extends AppCompatActivity {
     private ArrayList<String> chatMessages = new ArrayList<>();
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -72,10 +73,12 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
 
 
+
         messageText = findViewById(R.id.messageEditText);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerViewAdapter = new RecyclerViewAdapter(chatMessages);
-        nickName = findViewById(R.id.nickNameText);
+
+
 
         RecyclerView.LayoutManager recyclerViewManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(recyclerViewManager);
@@ -104,7 +107,7 @@ public class ChatActivity extends AppCompatActivity {
 
         //  databaseReference.child("Chats").child("Chat 2").child("Test Chat").child("Text 1").setValue(messageToSend);
 
-        databaseReference.child("Chats").child(uuidString).child("usermessage").setValue(messageToSend);
+        databaseReference.child("Chats").child(uuidString).child("userMessage").setValue(messageToSend);
         if (nickName == null){
             databaseReference.child("Chats").child(uuidString).child("userNickName").setValue(userNickName);
         }else {
@@ -112,7 +115,7 @@ public class ChatActivity extends AppCompatActivity {
         }
 
         // burada yazilan mesajlari zamanladik asagida get data icerisinde de query yaptik ve zamana gore diz dedik!!!
-        databaseReference.child("Chats").child(uuidString).child("usermessagetime").setValue(ServerValue.TIMESTAMP);
+        databaseReference.child("Chats").child(uuidString).child("userMessageTime").setValue(ServerValue.TIMESTAMP);
         messageText.setText("");
 
         getData();
@@ -124,7 +127,7 @@ public class ChatActivity extends AppCompatActivity {
         // firebase icerisinde acitigimiz chats objesini yazmamiz gerekmektedir!!
         DatabaseReference newReference = database.getReference("Chats");
 
-        Query query = newReference.orderByChild("usermessagetime");
+        Query query = newReference.orderByChild("userMessageTime");
 
 
         // en detayli childler icerigine ulasmak icin valuelistener kullaniriz!
@@ -147,7 +150,7 @@ public class ChatActivity extends AppCompatActivity {
 
                     HashMap<String, String> hashMap = (HashMap<String, String>) ds.getValue();
                     String userNickName = hashMap.get("userNickName");
-                    String userMessage = hashMap.get("usermessage");
+                    String userMessage = hashMap.get("userMessage");
 
                     chatMessages.add(userNickName + ": " + userMessage);
                     // yeni bir sey yukledim orayi guncelle

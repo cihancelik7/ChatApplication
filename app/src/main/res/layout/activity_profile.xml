@@ -8,10 +8,10 @@
     tools:context=".ProfileActivity">
 
 
-     <ImageView
+    <ImageView
         android:id="@+id/userImageTextView"
         android:layout_width="261dp"
-        android:layout_height="0dp"
+        android:layout_height="160dp"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="35dp"
         android:onClick="selectPicture"
@@ -23,28 +23,41 @@
 
     <EditText
         android:id="@+id/nickNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="233dp"
+        android:layout_height="64dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:fontFamily="serif"
         android:hint="NickName"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/ageText"
+        app:layout_constraintBottom_toTopOf="@+id/emailText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userImageTextView" />
 
     <EditText
-        android:id="@+id/ageText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/emailText"
+        android:layout_width="232dp"
+        android:layout_height="62dp"
         android:layout_marginBottom="107dp"
         android:ems="10"
         android:fontFamily="serif"
-        android:hint="Age"
+        android:hint="eMail"
         app:layout_constraintBottom_toTopOf="@+id/uploadButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nickNameText" />
+
+    <EditText
+        android:id="@+id/ageText"
+        android:layout_width="232dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="104dp"
+        android:ems="10"
+        android:fontFamily="serif"
+        android:hint="Age"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,13 +65,13 @@
 
     <Button
         android:id="@+id/uploadButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="104dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="75dp"
         android:layout_marginBottom="84dp"
         android:onClick="upload"
         android:text="Upload"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ageText" />
+        app:layout_constraintTop_toBottomOf="@+id/emailText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
