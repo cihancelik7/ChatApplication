@@ -118,7 +118,7 @@ public class ChatActivity extends AppCompatActivity {
         databaseReference.child("Chats").child(uuidString).child("userMessageTime").setValue(ServerValue.TIMESTAMP);
         messageText.setText("");
 
-        getData();
+
 
     }
 
@@ -168,4 +168,5 @@ public class ChatActivity extends AppCompatActivity {
         });
 
     }
+
 }

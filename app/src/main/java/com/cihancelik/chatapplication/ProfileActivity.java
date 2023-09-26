@@ -71,33 +71,30 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void getData() {
-
         DatabaseReference newReference = database.getReference("Profiles");
         newReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds : snapshot.getChildren()) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     HashMap<String, String> hashMap = (HashMap<String, String>) ds.getValue();
+                    String userEmail = hashMap.get("userEmail");
 
-                    String username = hashMap.get("userEmail");
-
-                    if (username.matches(mAuth.getCurrentUser().toString())) {
+                    // Kullanıcının oturum açtığı e-posta ile veriyi karşılaştırın
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    if (user != null && user.getEmail() != null && user.getEmail().equals(userEmail)) {
                         String userAge = hashMap.get("userAge");
                         String userNickName = hashMap.get("userNickName");
                         String userImageURL = hashMap.get("userImageUrl");
-                        String userEmail = hashMap.get("userEmail");
 
-                        // data da kaydettigimiz imageyi profile kisminda ki image dosyasonda gorunur kilmak icin
-                        // picasso kutuphanesini kullanacagiz!@!!!
+                        // Data'dan alınan bilgileri görüntüleme öğelerine yerleştirin
+                        ageText.setText(userAge);
+                        nickName.setText(userNickName);
+                        mailText.setText(userEmail);
 
-                        if (userAge != null && userImageURL != null && userEmail != null) {
-
-                            ageText.setText(userAge);
-                            nickName.setText(userNickName);
-                            mailText.setText(userEmail);
+                        // Picasso kullanarak resmi yükleme
+                        if (userImageURL != null && !userImageURL.isEmpty()) {
                             Picasso.get().load(userImageURL).into(userImageView);
                         }
-
                     }
                 }
             }
@@ -178,7 +175,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void selectPicture(View view) {
         // sdk 23 ve alti icin appcompat kullaniyoruz!!!
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_DENIED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         } else {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

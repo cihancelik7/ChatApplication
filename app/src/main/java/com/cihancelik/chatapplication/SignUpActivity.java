@@ -57,6 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                         } else {
                             Toast.makeText(SignUpActivity.this, "Boyle bir kullanici mevcut", Toast.LENGTH_LONG).show();
+
                         }
 
                     }
@@ -78,7 +79,12 @@ public class SignUpActivity extends AppCompatActivity {
 
                     }
                 });
-
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
+        startActivity(intent);
+    }
 }
